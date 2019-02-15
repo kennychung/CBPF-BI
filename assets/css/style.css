@@ -292,17 +292,14 @@ span[class*="tag-"] {
   font-size: 16px;
 }
 
-#anchor-1, #anchor-5 {
-  padding-top: 75px;
-}
 
-#anchor-2, #anchor-3, #anchor-4, #anchor-6 {
+#anchor-1, #anchor-5, #anchor-2, #anchor-3, #anchor-4, #anchor-6 {
   padding-top: 50px;
 }
 
-#contribution_heading, #allocation_heading, #allocationtrend_heading, #fundingoverview_heading, #cluster_heading, #clustertrend_heading {
-  margin-top: -180px;
-  padding-top: 180px;
+#contribution_heading, #contributiontrend_heading, #allocation_heading, #allocationtrend_heading, #fundingoverview_heading, #cluster_heading, #clustertrend_heading {
+  margin-top: -50px;
+  padding-top: 50px;
 }
 
 nav[data-toggle="toc"] {
@@ -351,15 +348,10 @@ nav[data-toggle="toc"] {
   }
 }
 
-@media (max-width: 768px) {
-  #contributiontrend_heading {
-    margin-top: -120px;
-    padding-top: 120px;
-  }
-}
+
 
 @media (max-width: 768px) {
-  #contribution_heading, #allocation_heading, #allocationtrend_heading, #fundingoverview_heading, #cluster_heading, #clustertrend_heading {
+  #contribution_heading, #contributiontrend_heading, #allocation_heading, #allocationtrend_heading, #fundingoverview_heading, #cluster_heading, #clustertrend_heading {
     margin-top: -100px;
     padding-top: 100px;
   }
@@ -601,6 +593,39 @@ nav[data-toggle=toc] .nav > li > a:focus, nav[data-toggle=toc] .nav > li > a:hov
 
 .bd-example-modal-lg {
   padding-right: 0 !important;
+}
+
+#scroll {
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color:#ccc;
+    text-indent:-9999px;
+    display:none;
+    -webkit-border-radius:60px;
+    -moz-border-radius:60px;
+    border-radius:60px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+    transition: .3s ease-out;
+}
+#scroll span {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-8px;
+    margin-top:-12px;
+    height:0;
+    width:0;
+    border:8px solid transparent;
+    border-bottom-color:#fff;
+}
+#scroll:hover {
+    background-color:#418fde;
+    opacity:1;filter:"alpha(opacity=100)";
+    -ms-filter:"alpha(opacity=100)";	
 }
 
 .loading-panel{
