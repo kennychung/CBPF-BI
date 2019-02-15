@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Data Explorer | GMS</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body style="font-family:'Roboto Slab', serif;">
+    <div class="justify-content-center clean-block add-on call-to-action" style="height: 25px;padding-top: 0px;padding-bottom: 0px;">
+        <p class="text-left" style="margin-bottom: 2px;font-size: 10px;">Need to access old CBPF BI platform?&nbsp;<a href="gms.unocha.org/bi" target="_blank">Click here</a></p>
+    </div>
+    <nav class="navbar navbar-light navbar-expand-sm bg-white clean-navbar" style="background-color:#418fde;background-image:url(&quot;assets/img/1x1-418fdef9.png&quot;);color:rgb(254,254,254);">
+        <div class="container"><a class="navbar-brand logo" href="index.html" style="background-repeat: no-repeat;background-size: contain;color: rgba(255,255,255,0);background-position: center;background-image: url(&quot;assets/img/image.png&quot;);">CBPF DATA PORTAL &nbsp;&nbsp;</a>
+            <button
+                class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1" style="font-family:Montserrat, sans-serif;">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html" style="color:rgba(255,255,255,0.9);">BI HOME</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="dataexplorer.html" style="color:#fefefe;">DATA EXPLORER</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="resources.html" style="color:rgba(255,255,255,0.9);">RESOURCES</a></li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <main class="page pricing-table-page">
+        <section class="clean-block clean-hero" style="background-image:url(&quot;assets/img/pooledfunds.png&quot;);color:rgba(0,0,0,0.46);min-height:350px;">
+            <div class="text" style="background-color:rgba(0,0,0,0.33);padding-right:20px;padding-left:20px;">
+                <h2 style="margin-right:20px;margin-left:20px;"><br><strong>CBPF DATA EXPLORER</strong><br></h2>
+                <p style="margin-right:10px;margin-left:10px;">CBPF Data Explorer provides a list of full data snapshots of GMS<br></p>
+                <p style="margin-right:10px;margin-left:10px;font-size:12px;">*Latest Refresh Date: Today 12:00 GVA*</p>
+            </div>
+        </section>
+        <section class="clean-block clean-pricing dark" style="background-color:rgb(255,255,255);">
+            <div class="container">
+                <div class="block-heading"><style type="text/css">
+    @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+</style>
+<div ng-app="pooledFundModule" ng-controller="pooledFundController" class="ng-scope">
+    <div class="well-sm">
+
+        Pooled Fund: <select style="display:inline-block" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="selectedPooledFund" ng-options="pooledFund.PoolfundName for pooledFund in pooledFunds track by pooledFund.PoolfundCodeAbbrv"><option value="" class="">All</option><option label="Afghanistan" value="AFG23" selected="selected">Afghanistan</option><option label="CAR" value="CAR17">CAR</option><option label="DRC" value="DRC24">DRC</option><option label="Sudan" value="SUD15">Sudan</option><option label="Somalia" value="SOM21">Somalia</option><option label="South Sudan" value="SSD19">South Sudan</option><option label="Colombia" value="COL52">Colombia</option><option label="Ethiopia" value="ETH53">Ethiopia</option><option label="Haiti" value="HTI54">Haiti</option><option label="Myanmar" value="MMR59">Myanmar</option><option label="Pakistan" value="PAK60">Pakistan</option><option label="Yemen" value="YEM64">Yemen</option><option label="oPt" value="PSE67">oPt</option><option label="Turkey" value="TUR70">Turkey</option><option label="Lebanon" value="LBN71">Lebanon</option><option label="Jordan" value="JOR73">Jordan</option><option label="Syria" value="SYR62">Syria</option><option label="Iraq" value="IRQ72">Iraq</option><option label="Nigeria" value="NGA75">Nigeria</option></select>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="overflow:auto;height:100%;width:100%">
+            <!-- ngIf: error -->
+
+            <table class="table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th colspan="7" class="text-center" style="font-size:16px;">{{selectedPooledFund.PoolfundName}} Urls</th>
+                    </tr>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Description</th>
+                        <th id="col-hide">Parameters</th>
+                        <th id="col-hide">URL</th>
+                        <th id="col-hide">atom</th>
+                        <th id="col-hide">json</th>
+                        <th>csv</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                    <tr>
+                        <td>Project Summary by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Project Summary</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Project Summary from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    ShowFullProjectInfo=1 --> Will get Narrative info for projects.
+                                </li>
+                                <li>
+                                    CBPFCode=2227 --> Retrives data for CBPFCode (like search).
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectSummary</td>
+                        <td><a href="/vo1/odata/ProjectSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Project Summary with Location by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Project Summary with Location</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Project Summary from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    CBPFCode=2227 --> Retrives data for CBPFCode (like search).
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectSummaryWithLocation</td>
+                        <td><a href="/vo1/odata/ProjectSummaryWithLocation?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectSummaryWithLocation?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectSummaryWithLocation?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Project Summary with Location and Cluster by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Project Summary with Location and Cluster</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Project Summary from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    CBPFCode=2227 --> Retrives data for CBPFCode (like search).
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectSummaryWithLocationAndCluster</td>
+                        <td><a href="/vo1/odata/ProjectSummaryWithLocationAndCluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectSummaryWithLocationAndCluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectSummaryWithLocationAndCluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Pipeline Project Summary by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Pipeline Project Summary</span> for all <span style="font-weight:bold">Unapproved Projects </span> in a specific Pooled Fund. In case you wish to view Pipeline Project Summary from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    CBPFCode=2227 --> Retrives data for CBPFCode (like search).
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/PipelineProjectSummary</td>
+                        <td><a href="/vo1/odata/PipelineProjectSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PipelineProjectSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PipelineProjectSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cluster by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">Clusters</span> for each <span style="font-weight:bold"> Approved project</span> in a specific Pooled Fund. In case you wish to view Cluster details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/Cluster</td>
+                        <td><a href="/vo1/odata/Cluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Cluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Cluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Pipeline Project Cluster by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">Pipeline Project Clusters</span> for each <span style="font-weight:bold"> Unapproved project</span> in a specific Pooled Fund. In case you wish to view Pipeline Project Cluster details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/PipelineProjectCluster</td>
+                        <td><a href="/vo1/odata/PipelineProjectCluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PipelineProjectCluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PipelineProjectCluster?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Other Beneficiary by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">Other / Additional Beneficiary</span> details for each <span style="font-weight:bold">Approved project</span> in a specific Pooled Fund. In case you wish to view Other Beneficiary details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/OtherBeneficiary</td>
+                        <td><a href="/vo1/odata/OtherBeneficiary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/OtherBeneficiary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/OtherBeneficiary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sub Grants by Pooled Fund Code</td>
+                        <td>This API returns information regarding <span style="font-weight:bold">Sub Grants to implementing partner</span> for each <span style="font-weight:bold">Approved project</span> in a specific Pooled Fund. In case you wish to view Sub Grants details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/SubGrant</td>
+                        <td><a href="/vo1/odata/SubGrant?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/SubGrant?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/SubGrant?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Other Funding Secured by Pooled Fund Code</td>
+                        <td>This API returns information regarding <span style="font-weight:bold">Other Funding Secured</span> for each <span style="font-weight:bold">Approved project</span> in a specific Pooled Fund. In case you wish to view Other Funding details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/OtherFunding</td>
+                        <td><a href="/vo1/odata/OtherFunding?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/OtherFunding?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/OtherFunding?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Focal Point by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">Focal Point</span> details for all<span style="font-weight:bold"> Approved projects</span> in a specific Pooled Fund. In case you wish to view Focal Point details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/FocalPoint</td>
+                        <td><a href="/vo1/odata/FocalPoint?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FocalPoint?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FocalPoint?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Logical Framework by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Logical Framework</span> details for all <span style="font-weight:bold">Approved projects</span> in a specific Pooled Fund. In case you wish to view Logical Framework details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/LogicalFramework</td>
+                        <td><a href="/vo1/odata/LogicalFramework?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFramework?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFramework?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Logical Framework Outcomes by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Logical Framework Outcomes</span> details for all <span style="font-weight:bold">Approved projects</span> in a specific Pooled Fund. In case you wish to view Outcomes details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    AllocationYear=2015 --> Outcomes for AllocationYear
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/LogicalFrameworkOutcome</td>
+                        <td><a href="/vo1/odata/LogicalFrameworkOutcome?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkOutcome?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkOutcome?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Logical Framework Outputs by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Logical Framework Outputs</span> details for all <span style="font-weight:bold">Approved projects</span> in a specific Pooled Fund. In case you wish to view Outputs details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    AllocationYear=2015 --> Outputs for AllocationYear
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/LogicalFrameworkOutput</td>
+                        <td><a href="/vo1/odata/LogicalFrameworkOutput?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkOutput?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkOutput?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Logical Framework Indicators by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Logical Framework Indicators</span> details for all <span style="font-weight:bold">Approved projects</span> in a specific Pooled Fund. In case you wish to view Indicators details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    AllocationYear=2015 --> Indicators for AllocationYear
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/LogicalFrameworkIndicator</td>
+                        <td><a href="/vo1/odata/LogicalFrameworkIndicator?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkIndicator?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkIndicator?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Logical Framework Activities by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Logical Framework Activities</span> details for all <span style="font-weight:bold">Approved projects</span> in a specific Pooled Fund. In case you wish to view Activities details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    AllocationYear=2015 --> Activities for AllocationYear
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/LogicalFrameworkActivity</td>
+                        <td><a href="/vo1/odata/LogicalFrameworkActivity?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkActivity?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/LogicalFrameworkActivity?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>SRP by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">SRP in Logical Framework</span> details for all <span style="font-weight:bold">Approved projects</span> in a specific Pooled Fund. In case you wish to view SRP details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/SRP</td>
+                        <td><a href="/vo1/odata/SRP?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/SRP?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/SRP?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Workplan by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">Workplan</span> details for all<span style="font-weight:bold"> Approved projects</span> in a specific Pooled Fund. In case you wish to view Workplan details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/Workplan</td>
+                        <td><a href="/vo1/odata/Workplan?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Workplan?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Workplan?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Other Info Organization by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">Coordination with Other Organization</span> details from Other Info for all<span style="font-weight:bold"> Approved projects</span> in a specific Pooled Fund. In case you wish to view Other Organization details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/OtherInfoOrganization</td>
+                        <td><a href="/vo1/odata/OtherInfoOrganization?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/OtherInfoOrganization?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/OtherInfoOrganization?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Budget by Pooled Fund Code</td>
+                        <td>This API returns each <span style="font-weight:bold">Budget line</span> information for all<span style="font-weight:bold"> Approved projects</span> in a specific Pooled Fund. In case you wish to view Budget details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/Budget</td>
+                        <td><a href="/vo1/odata/Budget?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Budget?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Budget?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cost Effectiveness Analysis by Pooled Fund Code</td>
+                        <td>This API returns information regarding <span style="font-weight:bold">Cost Effectiveness Analysis</span> for all<span style="font-weight:bold"> Approved projects</span> in a specific Pooled Fund. In case you wish to view Cost Effectiveness Analysis details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/CostEffectiveAnalysis</td>
+                        <td><a href="/vo1/odata/CostEffectiveAnalysis?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CostEffectiveAnalysis?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CostEffectiveAnalysis?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Location by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Locations</span> where the projects are implemented. This API returns data for<span style="font-weight:bold"> Approved projects</span> specific to the pooled fund. In case you wish to view Location details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    AdminlocationLevel=1_2_3_4 --> Underscore separated string for Admin Location Levels. If parameter is not set then by default on Level 1 information will be showed.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/Location</td>
+                        <td><a href="/vo1/odata/Location?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Location?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Location?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Narrative Report Summary by Pooled Fund Code</td>
+                        <td>This API returns the lastest approved <span style="font-weight:bold">Narrative Report Summary</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Narrative report Summary from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>ShowAllReports=1 --> Shows all reports</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/NarrativeReportSummary</td>
+                        <td><a href="/vo1/odata/NarrativeReportSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Narrative Report Beneficiaries by Pooled Fund Code</td>
+                        <td>This API returns the latest approved <span style="font-weight:bold">Narrative Report Beneficiaries</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Narrative report beneficiaries from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>ShowAllReports=1 --> Shows all reports</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/NarrativeReportBeneficiary</td>
+                        <td><a href="/vo1/odata/NarrativeReportBeneficiary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportBeneficiary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportBeneficiary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Narrative Report Monitoring by Pooled Fund Code</td>
+                        <td>This API returns the latest approved <span style="font-weight:bold">Narrative Report Monitoring</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Narrative report monitoring from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>ShowAllReports=1 --> Shows all reports</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/NarrativeReportMonitoring</td>
+                        <td><a href="/vo1/odata/NarrativeReportMonitoring?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportMonitoring?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportMonitoring?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Narrative Report Logical framework by Pooled Fund Code</td>
+                        <td>This API returns the latest approved <span style="font-weight:bold">Narrative Report Logical Framework</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Narrative report logical framework from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>ShowAllReports=1 --> Shows all reports</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/NarrativeReportLogicalFramework</td>
+                        <td><a href="/vo1/odata/NarrativeReportLogicalFramework?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportLogicalFramework?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportLogicalFramework?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Financial Report Summary by Pooled Fund Code</td>
+                        <td>This API returns the latest approved <span style="font-weight:bold">Financial Report Summary</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Financial report Summary from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>ShowAllReports=1 --> Shows all reports</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/FinancialReportSummary</td>
+                        <td><a href="/vo1/odata/FinancialReportSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FinancialReportSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FinancialReportSummary?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Financial Report Section by Pooled Fund Code</td>
+                        <td>This API returns the latest approved <span style="font-weight:bold">Financial Report Section</span> for all <span style="font-weight:bold">Approved Projects </span> in a specific Pooled Fund. In case you wish to view Financial report Section from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>ShowAllReports=1 --> Shows all reports</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/FinancialReportSection</td>
+                        <td><a href="/vo1/odata/FinancialReportSection?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FinancialReportSection?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FinancialReportSection?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>First Disbursement Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">First Disbursement Milestone</span> in a specific Pooled Fund. In case you wish to view First Disbursement Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/FirstDisbursementMilestone</td>
+                        <td><a href="/vo1/odata/FirstDisbursementMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FirstDisbursementMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FirstDisbursementMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Technical Review Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Technical Review Milestone</span> in a specific Pooled Fund. In case you wish to view Technical Review Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/TechnicalReviewMilestone</td>
+                        <td><a href="/vo1/odata/TechnicalReviewMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/TechnicalReviewMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/TechnicalReviewMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Submission Of Proposal Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Submission Of Proposal Milestone</span> in a specific Pooled Fund. In case you wish to view Submission Of Proposal Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/SubmissionOfProposalMilestone</td>
+                        <td><a href="/vo1/odata/SubmissionOfProposalMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/SubmissionOfProposalMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/SubmissionOfProposalMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Revision Request Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Revision Request Milestone</span> in a specific Pooled Fund. In case you wish to view Revision Request Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/RevisionRequestMilestone</td>
+                        <td><a href="/vo1/odata/RevisionRequestMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/RevisionRequestMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/RevisionRequestMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Financial Report Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Financial Report Milestone</span> in a specific Pooled Fund. In case you wish to view Financial Report Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/FinancialReportMilestone</td>
+                        <td><a href="/vo1/odata/FinancialReportMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FinancialReportMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/FinancialReportMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Narrative Report Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Narrative Report Milestone</span> in a specific Pooled Fund. In case you wish to view Narrative Report Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/NarrativeReportMilestone</td>
+                        <td><a href="/vo1/odata/NarrativeReportMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/NarrativeReportMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Disbursement Milestone by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Disbursement Milestone</span> in a specific Pooled Fund. In case you wish to view Disbursement Milestone from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund</li>
+                            </ul>
+                        </td>
+                        <td>../odata/DisbursementMilestone</td>
+                        <td><a href="/vo1/odata/DisbursementMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/DisbursementMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/DisbursementMilestone?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Contribution by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Contribution</span> in a specific Pooled Fund. In case you wish to view Contributions from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). You can also view Contribution for a Fiscal Year by using year parameter (i.e. year querystring) Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>year=2008 --> Get specific years data</li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund.</li>
+                            </ul>
+                        </td>
+                        <td>../odata/Contribution</td>
+                        <td><a href="/vo1/odata/Contribution?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Contribution?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/Contribution?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>CostTracking by Pooled Fund Code</td>
+                        <td>This API returns <span style="font-weight:bold">CostTracking</span> for each <span style="font-weight:bold"> Approved project</span> in a specific Pooled Fund. In case you wish to view CostTracking details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul style="float:left">
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund.</li>
+                            </ul>
+                        </td>
+                        <td>../odata/CostTracking</td>
+                        <td><a href="/vo1/odata/CostTracking?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CostTracking?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CostTracking?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>CBPF Project Score Cards</td>
+                        <td>This API returns <span style="font-weight:bold">Project Score Cards</span> in a specific Pooled Fund. In case you wish to view Project Score Cards details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul style="float:left">
+                                <li>
+                                    ShowAllScoreCards=1 --> Shows Show all Project ScoreCards (Active/InActive)
+                                </li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund.</li>
+                                <li>AllocationYear=2016_2015_2014 --> Gets data of specific Allocation Year.</li>
+                                <li>ScoreCardInstance={CA,PI} --> Gets data of specific Allocation Year.</li>
+                            </ul>
+                        </td>
+                        <td>../odata/CBPFProjectScorecard</td>
+                        <td><a href="/vo1/odata/CBPFProjectScorecard?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CBPFProjectScorecard?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CBPFProjectScorecard?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>CBPF Partner Score Cards</td>
+                        <td>This API returns <span style="font-weight:bold">Partner Score Cards</span> in a specific Pooled Fund. In case you wish to view Partner Score Cards details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul style="float:left">
+                                <li>
+                                    ShowAllScoreCards=1 --> Shows Show all Project ScoreCards (Active/InActive)
+                                </li>
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund.</li>
+                                <li>ScoreCardInstance={CA,PI} --> Gets data of specific Allocation Year.</li>
+                            </ul>
+                        </td>
+                        <td>../odata/CBPFPartnerScorecard</td>
+                        <td><a href="/vo1/odata/CBPFPartnerScorecard?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CBPFPartnerScorecard?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/CBPFPartnerScorecard?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Partner Due Diligence</td>
+                        <td>This API returns <span style="font-weight:bold">Partner Due Diligence</span> in a specific Pooled Fund. In case you wish to view Partner Due Diligence details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul style="float:left">
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund.</li>
+                            </ul>
+                        </td>
+                        <td>../odata/PartnerDueDiligence</td>
+                        <td><a href="/vo1/odata/PartnerDueDiligence?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PartnerDueDiligence?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PartnerDueDiligence?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Partner CA</td>
+                        <td>This API returns <span style="font-weight:bold">Partner CA</span> in a specific Pooled Fund. In case you wish to view Partner CA details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul style="float:left">
+                                <li>poolfundAbbrv==AFG23 --> Gets data of specific fund.</li>
+                            </ul>
+                        </td>
+                        <td>../odata/PartnerCA</td>
+                        <td><a href="/vo1/odata/PartnerCA?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PartnerCA?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/PartnerCA?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Project Location by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Project Locations</span> where the projects are implemented. This API returns data for<span style="font-weight:bold"> Approved projects</span> specific to the pooled fund. In case you wish to view Location details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectLocation</td>
+                        <td><a href="/vo1/odata/ProjectLocation?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectLocation?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectLocation?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Project Location by Pooled Fund Code and Location Level</td>
+                        <td>This API returns the <span style="font-weight:bold">Project Locations</span> where the projects are implemented. This API returns data for<span style="font-weight:bold"> Approved projects</span> specific to the pooled fund. In case you wish to view Location details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    AdminlocationLevel=1_2_3_4 --> Underscore separated string for Admin Location Levels. If parameter is not set then by default on Level 1 information will be showed.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectLocationLevel</td>
+                        <td><a href="/vo1/odata/ProjectLocationLevel?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectLocationLevel?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectLocationLevel?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Project Location Activities by Pooled Fund Code</td>
+                        <td>This API returns the <span style="font-weight:bold">Project Locations Activities</span> where the projects are implemented. This API returns data for<span style="font-weight:bold"> Approved projects</span> specific to the pooled fund. In case you wish to view Location details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                                <li>
+                                    AdminlocationLevel=1_2_3_4 --> Underscore separated string for Admin Location Levels. If parameter is not set then by default on Level 1 information will be showed.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectLocationActivities</td>
+                        <td><a href="/vo1/odata/ProjectLocationActivities?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectLocationActivities?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectLocationActivities?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Project All Location by Activities</td>
+                        <td>This API returns the <span style="font-weight:bold">Project All Locations Activities</span> where the projects are implemented. This API returns data for<span style="font-weight:bold"> Approved projects</span> specific to the pooled fund. In case you wish to view Location details from all pooled funds, please remove the pooled fund abbreviation parameter (i.e. poolfundAbbrv querystring). Status: Completed</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    ShowAllPooledFunds=1 --> Shows all PooledFunds
+                                </li>
+                                <li>
+                                    poolfundAbbrv==AFG23 --> Gets data of specific fund.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>../odata/ProjectAllLocationsByActivity</td>
+                        <td><a href="/vo1/odata/ProjectAllLocationsByActivity?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=atom" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectAllLocationsByActivity?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}" target="_blank">Download</a></td>
+                        <td><a href="/vo1/odata/ProjectAllLocationsByActivity?poolfundAbbrv={{selectedPooledFund.PoolfundCodeAbbrv}}&amp;$format=csv" target="_blank">Download</a></td>
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div></div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark" style="font-family: Montserrat, sans-serif;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><a href="#">GMS-SUPPORT@UN.ORG</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>OCHA SITES</h5>
+                    <ul>
+                        <li><a href="www.unocha.org">UNOCHA</a></li>
+                        <li><a href="www.unocha.org/cerf">CERF</a></li>
+                        <li><a href="https://fts.unocha.org">FTS</a></li>
+                        <li><a href="https://reliefweb.int">RELIEFWEB</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="https://gms.unocha.org">GMS Login</a></li>
+                        <li><a href="https://gms.unocha.org/support">GMS Help Portal</a></li>
+                        <li><a href="https://gms-blog.unocha.org">GMS Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© United Nations for the Coordination of Humanitarian Affairs</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/respond.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+</body>
+
+</html>
