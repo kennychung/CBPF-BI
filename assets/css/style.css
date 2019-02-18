@@ -593,7 +593,7 @@ nav[data-toggle=toc] .nav > li > a:focus, nav[data-toggle=toc] .nav > li > a:hov
   height: 99%;
 }
 
-.bd-example-modal-lg {
+.bd-example-modal-lg, .bd-example2-modal-lg, .bd-example3-modal-lg, .bd-example4-modal-lg, .bd-example5-modal-lg, .bd-example6-modal-lg, .bd-example7-modal-lg {
   padding-right: 0 !important;
 }
 
