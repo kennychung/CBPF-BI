@@ -151,11 +151,27 @@
                                         <div class="block-heading">
                                             <div id="anchor-1"></div>
                                             <h2 class="text-info" id="contributiontrend_heading">CONTRIBUTION TRENDS</h2>
-                                            <p style="max-width:800px;">Since the first CBPF was opened in Angola in 1997, donors have contributed more than $6 billion to 27 funds operating in the most severe and complex emergencies around the world. In 2018, donors contributed
-                                                a record $882 million to CBPFs in 18 countries</p>
+                                            <p style="max-width:800px;">Since the first CBPF was opened in Angola in 1997, donors have contributed more than $6 billion to 27 funds operating in the most severe and complex emergencies around the world. In 2018, donors contributed  a record $882 million to CBPFs in 18 countries</p>
                                         </div>
                                     </div>
                                 </div><div id="d3chartcontainerpbicli" data-showfuture="true" data-responsive="true"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbicli/src/d3chartpbicli.js"></script>
+								<div class="text-center" style="z-index: 100; position: relative"><button class="btn-fullscreen" data-toggle="modal" data-target=".bd-example-modal-lg">See the chart in full-screen mode</button></div>
+								<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										  <span aria-hidden="true">&times;</span>
+										</button>
+									  </div>
+									  <div class="modal-body text-center chart-panel">
+										  <div class="">
+									  	<iframe class="embed-responsive-item" src="full-contribution-trends.html" frameborder="0" width="100%" allowfullscreen></iframe></div>
+									  </div>									  
+									</div>
+								  </div>
+								</div>
 							</div>
                         </section>
                         
@@ -167,9 +183,24 @@
                                             <div id="anchor-5"></div>
                                             <h2 class="text-info" id="allocation_heading">ALLOCATIONS</h2>
                                             <p style="max-width: 1020px;">Funding from CBPFs is directly available to UN agencies, national and international non-governmental organizations (NGOs) and Red Cross/ Red Crescent organizations.</p>
-                                            <p style="max-width: 1020px;">In 2018, CBPFs allocated more than $712million to 634 partners in 18 countries to support 1,246 critical humanitarian projects. These projects targeted millions of people with healthcare, food aid, clean water, shelter and other life-saving assistance.</p>
-											<div>
-    											<div id="d3chartcontainerpbialp" data-year="2018" data-partner="total" data-showaverage="true" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbialp/src/d3chartpbialp.js"></script>
+                                            <p style="max-width: 1020px;">In 2018, CBPFs allocated more than $712million to 634 partners in 18 countries to support 1,246 critical humanitarian projects. These projects targeted millions of people with healthcare, food aid, clean water, shelter and other life-saving assistance.</p>											
+    										<div id="d3chartcontainerpbialp" data-year="2018" data-partner="total" data-showaverage="true" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbialp/src/d3chartpbialp.js"></script>											
+											<div class="text-center" style="z-index: 100; position: relative"><button class="btn-fullscreen" data-toggle="modal" data-target=".bd-example-modal-lg">See the chart in full-screen mode</button></div>
+											<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+											  <div class="modal-dialog" role="document">
+												<div class="modal-content">
+												  <div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													  <span aria-hidden="true">&times;</span>
+													</button>
+												  </div>
+												  <div class="modal-body text-center chart-panel">
+													  <div class="">
+													<iframe class="embed-responsive-item" src="full-contribution.html" frameborder="0" width="100%" allowfullscreen></iframe></div>
+												  </div>									  
+												</div>
+											  </div>
 											</div>
 										</div>
                                     </div>
@@ -219,6 +250,23 @@
 										<div>
     										<div id="d3chartcontainerpbiali" data-sortbuttons="total" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbiali/src/d3chartpbiali.js"></script>
 										</div>
+										<div class="text-center" style="z-index: 100; position: relative"><button class="btn-fullscreen" data-toggle="modal" data-target=".bd-example-modal-lg">See the chart in full-screen mode</button></div>
+										<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+											<div class="modal-content">
+											  <div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												  <span aria-hidden="true">&times;</span>
+												</button>
+											  </div>
+											  <div class="modal-body text-center chart-panel">
+												  <div class="">
+												<iframe class="embed-responsive-item" src="full-contribution.html" frameborder="0" width="100%" allowfullscreen></iframe></div>
+											  </div>									  
+											</div>
+										  </div>
+										</div>
 									</div>
                                 </div>
                             </div>
@@ -245,8 +293,24 @@
                                 </div>
 								<div id="container">
     								<div id="d3chartcontainerpbifdc" data-year="2018" data-showmap="false" data-shownames="true" data-regions="all" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbifdc/src/d3chartpbifdc.js"></script>
+									<div class="text-center" style="z-index: 100; position: relative"><button class="btn-fullscreen" data-toggle="modal" data-target=".bd-example-modal-lg">See the chart in full-screen mode</button></div>
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+									  <div class="modal-dialog" role="document">
+										<div class="modal-content">
+										  <div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											  <span aria-hidden="true">&times;</span>
+											</button>
+										  </div>
+										  <div class="modal-body text-center chart-panel">
+											  <div class="">
+											<iframe class="embed-responsive-item" src="full-contribution.html" frameborder="0" width="100%" allowfullscreen></iframe></div>
+										  </div>									  
+										</div>
+									  </div>
+									</div>
 								</div>
-							</div>
                             <!--<div class="container justify-content-center">
                                 <div class="block-heading" style="margin-top:-40px;"></div>
                                 <div class="row no-gutters align-content-center align-self-center">
@@ -267,7 +331,26 @@
                                             <p style="max-width: 1020px;">CBPF receives broad support from United Nations Member States, the private sectors and individuals</p>
                                         </div>
                                     </div>
-                                </div><div id="d3chartcontainerpbiolc" data-year="2018" data-modality="total" data-beneficiaries="targeted" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbiolc/src/d3chartpbiolc.js"></script></div>
+                                </div>
+								<div id="d3chartcontainerpbiolc" data-year="2018" data-modality="total" data-beneficiaries="targeted" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbiolc/src/d3chartpbiolc.js"></script>
+								<div class="text-center" style="z-index: 100; position: relative"><button class="btn-fullscreen" data-toggle="modal" data-target=".bd-example-modal-lg">See the chart in full-screen mode</button></div>
+								<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										  <span aria-hidden="true">&times;</span>
+										</button>
+									  </div>
+									  <div class="modal-body text-center chart-panel">
+										  <div class="">
+										<iframe class="embed-responsive-item" src="full-contribution.html" frameborder="0" width="100%" allowfullscreen></iframe></div>
+									  </div>									  
+									</div>
+								  </div>
+								</div>
+							</div>
                             <!--<div class="container justify-content-center">
                                 <div class="block-heading" style="margin-top:-40px;"></div>
                                 <div class="row no-gutters align-content-center align-self-center">
@@ -284,7 +367,25 @@
                                         <div class="block-heading">
                                             <div id="anchor-6"></div>
                                             <h2 class="text-info" id="clustertrend_heading">BENEFICIARY TRENDS</h2>
-                                        </div><div id="d3chartcontainerpbiobe" data-year="2018" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbiobe/src/d3chartpbiobe.js"></script></div>
+                                        </div><div id="d3chartcontainerpbiobe" data-year="2018" data-responsive="true" data-lazyload="false"></div><script type="text/javascript" src="https://cbpfgms.github.io/pbiobe/src/d3chartpbiobe.js"></script>
+										<div class="text-center" style="z-index: 100; position: relative"><button class="btn-fullscreen" data-toggle="modal" data-target=".bd-example-modal-lg">See the chart in full-screen mode</button></div>
+										<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+											<div class="modal-content">
+											  <div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												  <span aria-hidden="true">&times;</span>
+												</button>
+											  </div>
+											  <div class="modal-body text-center chart-panel">
+												  <div class="">
+												<iframe class="embed-responsive-item" src="full-contribution.html" frameborder="0" width="100%" allowfullscreen></iframe></div>
+											  </div>									  
+											</div>
+										  </div>
+										</div>
+									</div>
                                 </div>
                             </div>
                             <!--<div class="container justify-content-center">

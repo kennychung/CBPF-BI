@@ -482,6 +482,8 @@ nav[data-toggle=toc] .nav > li > a:focus, nav[data-toggle=toc] .nav > li > a:hov
   border-width: 1px;
   border-radius: 3px;
   font-size: 13px;
+  margin-top: 15px;
+  cursor: pointer;
 }
 
 .btn-fullscreen:hover {
